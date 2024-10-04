@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "989624673159",
+    "firebase_url": "https://zuriel-app-default-rtdb.firebaseio.com",
+    "project_id": "zuriel-app",
+    "storage_bucket": "zuriel-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989624673159:android:4cbab19b5a077eac762922",
+        "android_client_info": {
+          "package_name": "com.christianappdevelopers.zuriel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbvwVD3wxH_QhAQ10epPm0I87yPuOCy1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
