@@ -3,6 +3,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zuriel/models/youtube.dart';
+import 'package:dio/dio.dart';
+import 'dart:convert';
+
+Dio createDio() {
+  final dio = Dio();
+  dio.options.headers['Access-Control-Allow-Origin'] = '*';
+  return dio;
+}
 
 class AddVideo extends StatefulWidget {
   static const route_name = "AddVideo";
@@ -47,6 +55,56 @@ class _AddVideoState extends State<AddVideo> {
     await collection.add(insertData);
   }
 
+  Future<Map> fetchYouTubeMetadata(String youtubeLink) async {
+    final url =
+        'https://uusi0w5n68.execute-api.us-east-1.amazonaws.com/prod/youtubeMetadata';
+    final payload = {
+      'videoUrl': youtubeLink,
+    };
+
+    try {
+      final dio = createDio();
+      final response = await dio.post(
+        url,
+        options: Options(
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'content-type': 'application/json',
+            'x-api-key':
+                '8ccc3f57-096b-4e6d-9ae4-bf5ef4a3f3cb', // Replace with your actual API key
+          },
+        ),
+        data: json.encode(payload),
+      );
+
+      if (response.statusCode == 200) {
+        final data = response.data;
+        DateTime now = DateTime.now();
+        int formattedDate = now.millisecondsSinceEpoch;
+        print('YouTube Metadata: $data');
+        YoutubeData metadata = YoutubeData.fromJson({
+          "title": data["title"],
+          "thumbnail": data["thumbnail"],
+          "youtubeLink": youtubeLink,
+          "updated": formattedDate,
+          "duration": 0.toString()
+        });
+
+        return {"status": response.statusCode, "data": metadata};
+      } else {
+        print('Failed to fetch metadata. Status code: ${response.statusCode}');
+        return {
+          "status": response.statusCode,
+          "message": "Error fetching metadata"
+        };
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+
+      return {"status": 400, "message": "Error fetching metadata"};
+    }
+  }
+
   Future<void> _addVideoData() async {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -59,22 +117,33 @@ class _AddVideoState extends State<AddVideo> {
 
       try {
         final String videolink = _linkController.text;
-        final YoutubeData youtubeMetaData =
-            await YoutubeDataFetcher.fetchMetadata(videolink);
+        Map responseData = await fetchYouTubeMetadata(videolink);
+        if (responseData["status"] == 200) {
+          final YoutubeData youtubeMetaData = responseData["data"];
 
-        Map<String, dynamic> insertDataObj = youtubeMetaData.toJson();
-        await insertDBData(insertDataObj);
+          Map<String, dynamic> insertDataObj = youtubeMetaData.toJson();
+          await insertDBData(insertDataObj);
+          setState(() {
+            fileBytes = null;
+            fileName = null;
+            _linkController.text = "";
+          });
+
+          // Display a success message or navigate to another screen
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Video uploaded successfully!')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Error Adding Video. Please try again.')),
+          );
+        }
         setState(() {
           fileBytes = null;
           fileName = null;
           _linkController.text = "";
-        });
 
-        // Display a success message or navigate to another screen
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('PDF uploaded successfully!')),
-        );
-        setState(() {
           isUploading = false;
         });
       } catch (e) {
