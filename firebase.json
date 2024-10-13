@@ -1,1 +1,89 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"zuriel-5ef8b","appId":"1:270593032705:android:dc26713edab0dbba","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"zuriel-5ef8b","configurations":{"android":"1:270593032705:android:dc26713edab0dbba","ios":"1:270593032705:ios:0eb8cb25b3ada0290c3600","macos":"1:270593032705:ios:0eb8cb25b3ada0290c3600","web":"1:270593032705:web:e5ebc199aa71a3230c3600","windows":"1:270593032705:web:1090cbb02f9d0b190c3600"}}}}}}
+{
+    "hosting": {
+        "public": "build/web",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "rewrites": [
+            {
+                "source": "**",
+                "destination": "/index.html"
+            }
+        ],
+        "headers": [
+            {
+                "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+                "headers": [
+                    {
+                        "key": "Access-Control-Allow-Origin",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "source": "**/*.@(jpg|jpeg|gif|png)",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "max-age=7200"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Origin",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "source": "**",
+                "headers": [
+                    {
+                        "key": "Access-Control-Allow-Origin",
+                        "value": "*"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Methods",
+                        "value": "GET, POST, PUT, DELETE, OPTIONS"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Headers",
+                        "value": "Content-Type, Authorization"
+                    }
+                ]
+            },
+            {
+                "source": "404.html",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "max-age=300"
+                    }
+                ]
+            }
+        ]
+    },
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "zuriel-5ef8b",
+                    "appId": "1:270593032705:android:dc26713edab0dbba",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "zuriel-5ef8b",
+                    "configurations": {
+                        "android": "1:270593032705:android:dc26713edab0dbba",
+                        "ios": "1:270593032705:ios:0eb8cb25b3ada0290c3600",
+                        "macos": "1:270593032705:ios:0eb8cb25b3ada0290c3600",
+                        "web": "1:270593032705:web:e5ebc199aa71a3230c3600",
+                        "windows": "1:270593032705:web:1090cbb02f9d0b190c3600"
+                    }
+                }
+            }
+        }
+    }
+}
