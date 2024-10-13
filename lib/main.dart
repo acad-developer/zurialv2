@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zuriel/module/auth/authroute.dart';
 import 'package:zuriel/module/auth/usermanagement.dart';
 import 'package:zuriel/module/auth/updateuserprofile.dart';
 import 'package:zuriel/module/chat/groupList.dart';
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       routes: {
-        "/": (_) => AuthWrapper(),
+        "/": (_) =>  Authentication(),
         Authentication.route_name: (_) => Authentication(),
         HomePage.route_name: (_) => HomePage(),
         PDFManagement.route_name: (_) => PDFManagement(),

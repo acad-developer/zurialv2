@@ -21,6 +21,7 @@ bool containsTrue(List<bool> list) {
 Future<UserProfile> getUserData(String userId) async {
   // ignore: await_only_futures
   UserProfile userProfile;
+  print(userId);
   DocumentSnapshot<Map<String, dynamic>> userProfileData =
       await FirebaseFirestore.instance
           .collection('userprofile')
@@ -333,4 +334,32 @@ String epochToDateTime(int epochTime) {
   return (formattedDate.toString()); // Output: 01/10/2021 - 00:00:00
 }
 
-
+Future<void> sendNotificationToTopic(
+    String title, String message, String topic, Map<String, dynamic> data) async {
+  final url = 'https://sendnotificationtotopic-a7ohwrqwqq-uc.a.run.app';
+  final dio = Dio(); // Initialize dio
+  try {
+    data["topic"]=topic;
+    final response = await dio.post(
+      url,
+      options: Options(
+        headers: {
+          'content-type': 'application/json',
+        },
+      ),
+      data: {
+        'title': title,
+        'message': message,
+        'topic': topic,
+        "data":data
+      },
+    );
+    if (response.statusCode == 200) {
+      print('Notification sent successfully');
+    } else {
+      print('Failed to send notification. Status code: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('An error occurred: $e');
+  }
+}

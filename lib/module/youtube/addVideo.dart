@@ -6,6 +6,8 @@ import 'package:zuriel/models/youtube.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
 
+import 'package:zuriel/tools/tools.dart';
+
 Dio createDio() {
   final dio = Dio();
   dio.options.headers['Access-Control-Allow-Origin'] = '*';
@@ -57,24 +59,16 @@ class _AddVideoState extends State<AddVideo> {
 
   Future<Map> fetchYouTubeMetadata(String youtubeLink) async {
     final url =
-        'https://uusi0w5n68.execute-api.us-east-1.amazonaws.com/prod/youtubeMetadata';
-    final payload = {
-      'videoUrl': youtubeLink,
-    };
-
+        'https://getyoutubemetadata-a7ohwrqwqq-uc.a.run.app?videoUrl=${youtubeLink}';
     try {
       final dio = createDio();
       final response = await dio.post(
         url,
         options: Options(
           headers: {
-            'Access-Control-Allow-Origin': '*',
             'content-type': 'application/json',
-            'x-api-key':
-                '8ccc3f57-096b-4e6d-9ae4-bf5ef4a3f3cb', // Replace with your actual API key
           },
         ),
-        data: json.encode(payload),
       );
 
       if (response.statusCode == 200) {
@@ -87,7 +81,8 @@ class _AddVideoState extends State<AddVideo> {
           "thumbnail": data["thumbnail"],
           "youtubeLink": youtubeLink,
           "updated": formattedDate,
-          "duration": 0.toString()
+          "duration": data["duration"],
+          
         });
 
         return {"status": response.statusCode, "data": metadata};
@@ -122,12 +117,14 @@ class _AddVideoState extends State<AddVideo> {
           final YoutubeData youtubeMetaData = responseData["data"];
 
           Map<String, dynamic> insertDataObj = youtubeMetaData.toJson();
-          await insertDBData(insertDataObj);
+          await insertDBData(insertDataObj); 
           setState(() {
             fileBytes = null;
             fileName = null;
             _linkController.text = "";
           });
+
+          sendNotificationToTopic("New Video Available", youtubeMetaData.title, "youtubevideodata",insertDataObj);
 
           // Display a success message or navigate to another screen
           ScaffoldMessenger.of(context).showSnackBar(

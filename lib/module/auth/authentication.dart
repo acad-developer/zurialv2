@@ -183,6 +183,9 @@ class _AuthenticationState extends State<Authentication> {
       
         Navigator.of(context).pushReplacementNamed("home");
       } else {
+        if(FirebaseAuth.instance.currentUser!=null){
+          FirebaseAuth.instance.currentUser!.sendEmailVerification();
+        }
         _errorHandling(
             "Error signing up: [firebase_auth/not-verified] Email address not verified, please check your email.");
       }

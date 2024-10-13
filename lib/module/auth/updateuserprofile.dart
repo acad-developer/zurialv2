@@ -45,11 +45,13 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
     });
     // ignore: await_only_futures
     user = await FirebaseAuth.instance.currentUser;
+    print(user!.uid);
     DocumentSnapshot<Map<String, dynamic>> userProfileData =
         await FirebaseFirestore.instance
             .collection('userprofile')
             .doc(user!.uid)
             .get();
+            
     Map<String, dynamic>? profiledata = userProfileData.data();
     setState(() {
       email = user!.email;

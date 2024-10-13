@@ -1,27 +1,45 @@
 {
   "project_info": {
-    "project_number": "989624673159",
-    "firebase_url": "https://zuriel-app-default-rtdb.firebaseio.com",
-    "project_id": "zuriel-app",
-    "storage_bucket": "zuriel-app.appspot.com"
+    "project_number": "270593032705",
+    "firebase_url": "https://zuriel-5ef8b.firebaseio.com",
+    "project_id": "zuriel-5ef8b",
+    "storage_bucket": "zuriel-5ef8b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:989624673159:android:4cbab19b5a077eac762922",
+        "mobilesdk_app_id": "1:270593032705:android:dc26713edab0dbba",
         "android_client_info": {
           "package_name": "com.christianappdevelopers.zuriel"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "270593032705-ugivume8dibfgrhgo13f8jvdd1bei7tm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.christianappdevelopers.zuriel",
+            "certificate_hash": "996f3b7a7771d8002c307fbffe8572608bbc565a"
+          }
+        },
+        {
+          "client_id": "270593032705-isck1a09oc8rontlk02agrmfrhd0liq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBbvwVD3wxH_QhAQ10epPm0I87yPuOCy1k"
+          "current_key": "AIzaSyBY3FRzW2_av4AdPnuz17OBIYaCida2x-E"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270593032705-isck1a09oc8rontlk02agrmfrhd0liq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

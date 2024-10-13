@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zuriel/tools/tools.dart';
 
 class AddPdf extends StatefulWidget {
   static const route_name = "AddPdf";
@@ -94,10 +95,12 @@ class _AddPdfState extends State<AddPdf> {
         Map<String, dynamic> insertDataObj = {
           "filename": metadata.name.toString(),
           "title": _descriptionController.text,
-          "updated": DateTime. now().millisecondsSinceEpoch,
+          "updated": DateTime.now().millisecondsSinceEpoch,
           "url": downloadURL.toString(),
         };
         await insertDBData(insertDataObj);
+        sendNotificationToTopic(
+            "New PDF Available", insertDataObj["title"], "pdfdata",insertDataObj);
 
         setState(() {
           _uploadProgress = 0;
@@ -156,12 +159,14 @@ class _AddPdfState extends State<AddPdf> {
                   Text('$_charCount/50'),
                 ],
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
-                    icon:Icon(Icons.picture_as_pdf),
+                    icon: Icon(Icons.picture_as_pdf),
                     onPressed: _pickPDFFile,
                     label: const Text('Select PDF'),
                   ),

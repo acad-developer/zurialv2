@@ -41,53 +41,54 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCXi9WXVMmEKNqqqBO9Dq1C7h-RF6YGW1w',
-    appId: '1:989624673159:web:ab73b177ac5eea95762922',
-    messagingSenderId: '989624673159',
-    projectId: 'zuriel-app',
-    authDomain: 'zuriel-app.firebaseapp.com',
-    databaseURL: 'https://zuriel-app-default-rtdb.firebaseio.com',
-    storageBucket: 'zuriel-app.appspot.com',
-    measurementId: 'G-NCE4JE2NHF',
+    apiKey: 'AIzaSyDzujVPVXfvkY8NTr2Ju9tOjeyDdvv6BmM',
+    appId: '1:270593032705:web:e5ebc199aa71a3230c3600',
+    messagingSenderId: '270593032705',
+    projectId: 'zuriel-5ef8b',
+    authDomain: 'zuriel-5ef8b.firebaseapp.com',
+    databaseURL: 'https://zuriel-5ef8b.firebaseio.com',
+    storageBucket: 'zuriel-5ef8b.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBbvwVD3wxH_QhAQ10epPm0I87yPuOCy1k',
-    appId: '1:989624673159:android:4cbab19b5a077eac762922',
-    messagingSenderId: '989624673159',
-    projectId: 'zuriel-app',
-    databaseURL: 'https://zuriel-app-default-rtdb.firebaseio.com',
-    storageBucket: 'zuriel-app.appspot.com',
+    apiKey: 'AIzaSyBY3FRzW2_av4AdPnuz17OBIYaCida2x-E',
+    appId: '1:270593032705:android:dc26713edab0dbba',
+    messagingSenderId: '270593032705',
+    projectId: 'zuriel-5ef8b',
+    databaseURL: 'https://zuriel-5ef8b.firebaseio.com',
+    storageBucket: 'zuriel-5ef8b.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAA0IpX2cRRZK4iJT3meKyFhb6kOOzsu4E',
-    appId: '1:989624673159:ios:a830762695bb416b762922',
-    messagingSenderId: '989624673159',
-    projectId: 'zuriel-app',
-    databaseURL: 'https://zuriel-app-default-rtdb.firebaseio.com',
-    storageBucket: 'zuriel-app.appspot.com',
+    apiKey: 'AIzaSyDkRm2GT1dFjPeU6cmT2GuJGj4GFP8YjXk',
+    appId: '1:270593032705:ios:0eb8cb25b3ada0290c3600',
+    messagingSenderId: '270593032705',
+    projectId: 'zuriel-5ef8b',
+    databaseURL: 'https://zuriel-5ef8b.firebaseio.com',
+    storageBucket: 'zuriel-5ef8b.appspot.com',
+    androidClientId: '270593032705-ugivume8dibfgrhgo13f8jvdd1bei7tm.apps.googleusercontent.com',
     iosBundleId: 'com.christianappdevelopers.zuriel',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAA0IpX2cRRZK4iJT3meKyFhb6kOOzsu4E',
-    appId: '1:989624673159:ios:a830762695bb416b762922',
-    messagingSenderId: '989624673159',
-    projectId: 'zuriel-app',
-    databaseURL: 'https://zuriel-app-default-rtdb.firebaseio.com',
-    storageBucket: 'zuriel-app.appspot.com',
+    apiKey: 'AIzaSyDkRm2GT1dFjPeU6cmT2GuJGj4GFP8YjXk',
+    appId: '1:270593032705:ios:0eb8cb25b3ada0290c3600',
+    messagingSenderId: '270593032705',
+    projectId: 'zuriel-5ef8b',
+    databaseURL: 'https://zuriel-5ef8b.firebaseio.com',
+    storageBucket: 'zuriel-5ef8b.appspot.com',
+    androidClientId: '270593032705-ugivume8dibfgrhgo13f8jvdd1bei7tm.apps.googleusercontent.com',
     iosBundleId: 'com.christianappdevelopers.zuriel',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCXi9WXVMmEKNqqqBO9Dq1C7h-RF6YGW1w',
-    appId: '1:989624673159:web:e0d7ef2dbc6bd8ff762922',
-    messagingSenderId: '989624673159',
-    projectId: 'zuriel-app',
-    authDomain: 'zuriel-app.firebaseapp.com',
-    databaseURL: 'https://zuriel-app-default-rtdb.firebaseio.com',
-    storageBucket: 'zuriel-app.appspot.com',
-    measurementId: 'G-PX77SZ7ELB',
+    apiKey: 'AIzaSyDzujVPVXfvkY8NTr2Ju9tOjeyDdvv6BmM',
+    appId: '1:270593032705:web:1090cbb02f9d0b190c3600',
+    messagingSenderId: '270593032705',
+    projectId: 'zuriel-5ef8b',
+    authDomain: 'zuriel-5ef8b.firebaseapp.com',
+    databaseURL: 'https://zuriel-5ef8b.firebaseio.com',
+    storageBucket: 'zuriel-5ef8b.appspot.com',
   );
+
 }
